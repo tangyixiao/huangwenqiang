@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄文强 | OIer 个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0f;
+            --bg-card: #111118;
+            --bg-card-hover: #161622;
+            --bg-card-alt: #14141f;
+            --border: #1e1e2e;
+            --border-light: #2a2a3a;
+            --text-primary: #e8e8f0;
+            --text-secondary: #b0b0c0;
+            --text-muted: #707088;
+            --accent-gold: #d4a853;
+            --accent-gold-light: #e8c97a;
+            --accent-blue: #5b9cf5;
+            --accent-blue-soft: #3b7dd8;
+            --accent-cyan: #00c9b8;
+            --accent-orange: #f08c4b;
+            --accent-red-soft: #e0556a;
+            --accent-purple: #8b7cf0;
+            --accent-green: #4caf84;
+            --glow-gold: rgba(212, 168, 83, 0.25);
+            --glow-blue: rgba(91, 156, 245, 0.2);
+            --glow-cyan: rgba(0, 201, 184, 0.18);
+            --radius-sm: 10px;
+            --radius: 16px;
+            --radius-lg: 22px;
+            --radius-xl: 28px;
+            --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+            --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            --shadow-glow-gold: 0 0 40px rgba(212, 168, 83, 0.2), 0 0 80px rgba(212, 168, 83, 0.06);
+            --transition-smooth: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── 星空粒子背景 ── */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.7;
+            }
+            40% {
+                opacity: 0.5;
+            }
+            85% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* ── 主容器 ── */
+        .main-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* ── 顶部导航 ── */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+            padding: 8px;
+            background: var(--bg-card);
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+        }
+        .nav-link .nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .nav-dot.luogu {
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px var(--glow-blue);
+        }
+        .nav-dot.qq-dot {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+        .nav-dot.oier {
+            background: var(--accent-gold);
+            box-shadow: 0 0 10px var(--glow-gold);
+        }
+
+        /* ── Hero 头部区域 ── */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px 36px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .hero-avatar-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e35 40%, #1a1a30 100%);
+            border: 3px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 0 8px rgba(212, 168, 83, 0.06), 0 0 40px rgba(212, 168, 83, 0.1);
+            user-select: none;
+        }
+        .hero-avatar:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 14px rgba(212, 168, 83, 0.1), 0 0 60px rgba(212, 168, 83, 0.18);
+            transform: translateY(-3px);
+        }
+        .hero-avatar-ring {
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.08);
+            animation: spinSlow 30s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .hero-name {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #f0e0b8 0%, #d4a853 40%, #e8c97a 70%, #c99840 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            margin-bottom: 4px;
+        }
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--bg-card);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+        .hero-meta .meta-icon {
+            font-size: 0.9rem;
+        }
+        .hero-signature {
+            margin-top: 14px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            opacity: 0.75;
+            transition: var(--transition-smooth);
+            cursor: default;
+        }
+        .hero-signature:hover {
+            opacity: 1;
+            color: var(--text-secondary);
+        }
+
+        /* ── 通用卡片 ── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 26px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+        }
+        .card-header .icon-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .icon-dot.gold {
+            background: var(--accent-gold);
+            box-shadow: 0 0 12px var(--glow-gold);
+        }
+        .icon-dot.blue {
+            background: var(--accent-blue);
+            box-shadow: 0 0 12px var(--glow-blue);
+        }
+        .icon-dot.cyan {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 12px var(--glow-cyan);
+        }
+        .icon-dot.orange {
+            background: var(--accent-orange);
+            box-shadow: 0 0 12px rgba(240, 140, 75, 0.2);
+        }
+        .icon-dot.purple {
+            background: var(--accent-purple);
+            box-shadow: 0 0 12px rgba(139, 124, 240, 0.2);
+        }
+
+        /* ── OI 等级徽章 ── */
+        .level-badge-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+        }
+        .level-badge:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px rgba(212, 168, 83, 0.12);
+        }
+        .level-badge .badge-value {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', 'Inter', monospace;
+        }
+
+        /* ── 竞赛成绩表格 ── */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 620px;
+        }
+        table thead th {
+            background: var(--bg-card-alt);
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        table tbody td {
+            padding: 13px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        table tbody tr {
+            transition: var(--transition-smooth);
+        }
+        table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .badge-rank {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.02em;
+        }
+        .badge-rank.gold-rank {
+            background: rgba(212, 168, 83, 0.15);
+            color: var(--accent-gold-light);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+        }
+        .badge-rank.silver-rank {
+            background: rgba(180, 190, 210, 0.12);
+            color: #c0c8d8;
+            border: 1px solid rgba(180, 190, 210, 0.25);
+        }
+        .badge-rank.bronze-rank {
+            background: rgba(200, 140, 100, 0.12);
+            color: #d4a080;
+            border: 1px solid rgba(200, 140, 100, 0.25);
+        }
+        .highlight-score {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', 'Inter', monospace;
+        }
+
+        /* ── 链接卡片 ── */
+        .link-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--border-light);
+        }
+        .link-card .link-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+        .link-icon-box.luogu-box {
+            background: rgba(91, 156, 245, 0.12);
+            color: var(--accent-blue);
+            border: 1px solid rgba(91, 156, 245, 0.2);
+        }
+        .link-icon-box.qq-box {
+            background: rgba(0, 201, 184, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 201, 184, 0.2);
+        }
+        .link-icon-box.oier-box {
+            background: rgba(212, 168, 83, 0.12);
+            color: var(--accent-gold);
+            border: 1px solid rgba(212, 168, 83, 0.2);
+        }
+        .link-icon-box.zone-box {
+            background: rgba(139, 124, 240, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 124, 240, 0.2);
+        }
+        .link-card .link-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+        .link-card .link-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .link-card .link-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-card .link-arrow {
+            margin-left: auto;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+        .link-card:hover .link-arrow {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        /* ── 引用区块 ── */
+        .quote-block {
+            margin-top: 16px;
+            padding: 18px 22px;
+            background: var(--bg-card-alt);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+        .quote-block:hover {
+            border-left-color: var(--accent-gold-light);
+            background: rgba(212, 168, 83, 0.03);
+        }
+        .quote-block .quote-mark {
+            position: absolute;
+            top: -8px;
+            left: 12px;
+            font-size: 3rem;
+            color: rgba(212, 168, 83, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .quote-block .quote-text {
+            position: relative;
+            z-index: 1;
+        }
+        .quote-block .quote-author {
+            display: block;
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-gold-light);
+            font-size: 0.78rem;
+            letter-spacing: 0.03em;
+        }
+
+        /* ── 页脚 ── */
+        .footer {
+            text-align: center;
+            padding: 28px 20px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+            opacity: 0.6;
+            transition: var(--transition-smooth);
+        }
+        .footer:hover {
+            opacity: 0.9;
+        }
+        .footer .emoji-heart {
+            color: var(--accent-red-soft);
+            animation: pulse 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 600px) {
+            .hero-name {
+                font-size: 2rem;
+            }
+            .hero-avatar {
+                width: 85px;
+                height: 85px;
+                font-size: 2.4rem;
+            }
+            .card {
+                padding: 18px 16px;
+                border-radius: var(--radius);
+            }
+            .link-cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .link-card {
+                padding: 12px 14px;
+                gap: 10px;
+            }
+            .link-card .link-title {
+                font-size: 0.8rem;
+            }
+            .link-card .link-icon-box {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+                border-radius: 8px;
+            }
+            .top-nav {
+                gap: 4px;
+                border-radius: 36px;
+                padding: 5px;
+            }
+            .nav-link {
+                padding: 8px 13px;
+                font-size: 0.78rem;
+                gap: 4px;
+            }
+            table {
+                font-size: 0.72rem;
+                min-width: 500px;
+            }
+            table thead th,
+            table tbody td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 星空粒子背景 -->
+    <div class="particles-container" id="particlesContainer" aria-hidden="true"></div>
+
+    <!-- 主容器 -->
+    <div class="main-wrapper">
+
+        <!-- 顶部导航 -->
+        <nav class="top-nav" aria-label="快捷导航">
+            <a href="https://www.luogu.com.cn/user/1187280" target="_blank" rel="noopener" class="nav-link active" title="洛谷主页">
+                <span class="nav-dot luogu"></span> 洛谷
+            </a>
+            <a href="https://oier.baoshuo.dev/oier/228473" target="_blank" rel="noopener" class="nav-link" title="OIer数据库">
+                <span class="nav-dot oier"></span> OIerDB
+            </a>
+            <a href="https://user.qzone.qq.com/3694404838?loginfrom=2" target="_blank" rel="noopener" class="nav-link" title="QQ空间">
+                <span class="nav-dot qq-dot"></span> QQ空间
+            </a>
+            <a href="#contact" class="nav-link" title="联系方式">
+                📬 联系
+            </a>
+        </nav>
+
+        <!-- Hero 头部 -->
+        <header class="hero-section">
+            <div class="hero-avatar-wrapper">
+                <div class="hero-avatar-ring"></div>
+                <div class="hero-avatar" aria-label="黄文强头像占位">⚛️</div>
+            </div>
+            <h1 class="hero-name">黄文强</h1>
+            <p class="hero-subtitle">OIer · 浙江绍兴 · 锡麟中学 · 初三</p>
+            <div class="hero-meta">
+                <span><span class="meta-icon">🎂</span> 15岁 · 3月28日 · 白羊座</span>
+                <span><span class="meta-icon">📍</span> 浙江绍兴</span>
+                <span><span class="meta-icon">🏅</span> CCF 6级</span>
+            </div>
+            <p class="hero-signature" title="个性签名">"I have forgotten all tragedies and see only..."</p>
+        </header>
+
+        <!-- OI 等级 & 排名概览 -->
+        <section class="card" aria-labelledby="overview-heading">
+            <div class="card-header">
+                <span class="icon-dot gold"></span>
+                <span id="overview-heading">📊 OI 概览</span>
+            </div>
+            <div class="level-badge-row">
+                <div class="level-badge">
+                    🏆 OlerDb 排名：<span class="badge-value">13,985</span>
+                </div>
+                <div class="level-badge">
+                    ⭐ 分数：<span class="badge-value">2,324.31</span>
+                </div>
+                <div class="level-badge">
+                    📜 CCF等级：<span class="badge-value">6级</span>
+                </div>
+            </div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">
+                持续进步中 —— 从初二入门二等奖到初三提高组二等奖，稳步上升 ✨
+            </p>
+        </section>
+
+        <!-- CSP 竞赛成绩 -->
+        <section class="card" aria-labelledby="csp-heading">
+            <div class="card-header">
+                <span class="icon-dot blue"></span>
+                <span id="csp-heading">🏅 CSP 竞赛成绩</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>赛事</th>
+                            <th>奖项</th>
+                            <th>得分</th>
+                            <th>选手排名</th>
+                            <th>省份</th>
+                            <th>学校</th>
+                            <th>年级</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CSP2025 入门</strong></td>
+                            <td><span class="badge-rank gold-rank">🥇 一等奖</span></td>
+                            <td class="highlight-score">310 / 400</td>
+                            <td>3,076 / 39,205</td>
+                            <td>浙江</td>
+                            <td>绍兴市锡麟中学</td>
+                            <td>初三</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CSP2025 提高</strong></td>
+                            <td><span class="badge-rank silver-rank">🥈 二等奖</span></td>
+                            <td class="highlight-score">132 / 400</td>
+                            <td>5,910 / 30,497</td>
+                            <td>浙江</td>
+                            <td>绍兴市锡麟中学</td>
+                            <td>初三</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CSP2024 入门</strong></td>
+                            <td><span class="badge-rank bronze-rank">🥉 二等奖</span></td>
+                            <td class="highlight-score">200 / 400</td>
+                            <td>12,203 / 40,430</td>
+                            <td>浙江</td>
+                            <td>绍兴市锡麟中学</td>
+                            <td>初二</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 链接卡片 -->
+        <section class="card" aria-labelledby="links-heading" id="contact">
+            <div class="card-header">
+                <span class="icon-dot cyan"></span>
+                <span id="links-heading">🔗 社交 & 平台链接</span>
+            </div>
+            <div class="link-cards-grid">
+                <!-- 洛谷 -->
+                <a href="https://www.luogu.com.cn/user/1187280" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-icon-box luogu-box">LG</div>
+                    <div class="link-info">
+                        <span class="link-label">Luogu</span>
+                        <span class="link-title">洛谷主页</span>
+                    </div>
+                    <span class="link-arrow">↗</span>
+                </a>
+                <!-- OIerDB -->
+                <a href="https://oier.baoshuo.dev/oier/228473" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-icon-box oier-box">OI</div>
+                    <div class="link-info">
+                        <span class="link-label">OIerDB</span>
+                        <span class="link-title">选手档案 #228473</span>
+                    </div>
+                    <span class="link-arrow">↗</span>
+                </a>
+                <!-- QQ -->
+                <a href="https://user.qzone.qq.com/3694404838?loginfrom=2" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-icon-box qq-box">QQ</div>
+                    <div class="link-info">
+                        <span class="link-label">QQ</span>
+                        <span class="link-title">3694404838</span>
+                    </div>
+                    <span class="link-arrow">↗</span>
+                </a>
+                <!-- QQ空间 -->
+                <a href="https://user.qzone.qq.com/3694404838?loginfrom=2" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-icon-box zone-box">🌐</div>
+                    <div class="link-info">
+                        <span class="link-label">QZone</span>
+                        <span class="link-title">QQ 空间</span>
+                    </div>
+                    <span class="link-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 奥本海默引用 -->
+        <section class="card" aria-labelledby="quote-heading">
+            <div class="card-header">
+                <span class="icon-dot orange"></span>
+                <span id="quote-heading">💭 喜欢的台词</span>
+            </div>
+            <div class="quote-block">
+                <span class="quote-mark">"</span>
+                <p class="quote-text">
+                    When I come to you with this...<br>
+                    We were worried that we'd start a chain reaction that would destroy the entire world...
+                </p>
+                <span class="quote-author">— J. Robert Oppenheimer</span>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:10px;text-align:right;">
+                <em>"I believe we did." — Teller</em>
+            </p>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>© 2025 黄文强 · 绍兴市锡麟中学 · OIer</p>
+            <p style="margin-top:4px;">Made with <span class="emoji-heart">❤️</span> &amp; lots of debugging</p>
+            <p style="margin-top:2px;font-size:0.7rem;">αωα</p>
+        </footer>
+
+    </div>
+
+    <!-- 粒子动画脚本 -->
+    <script>
+        (function() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 55;
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 2.5 + 0.8;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 18 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 16) + 's';
+                // 随机微弱的蓝/金/白色调
+                const hueRand = Math.random();
+                let color;
+                if (hueRand < 0.35) {
+                    color = 'rgba(212,168,83,' + (Math.random() * 0.5 + 0.3) + ')';
+                } else if (hueRand < 0.65) {
+                    color = 'rgba(160,190,230,' + (Math.random() * 0.45 + 0.25) + ')';
+                } else {
+                    color = 'rgba(220,220,240,' + (Math.random() * 0.4 + 0.25) + ')';
+                }
+                particle.style.backgroundColor = color;
+                particle.style.boxShadow = '0 0 ' + (size * 2) + 'px ' + color.replace(/[\d.]+\)$/, '0.4)');
+                fragment.appendChild(particle);
+            }
+            container.appendChild(fragment);
+        })();
+    </script>
+</body>
+</html>

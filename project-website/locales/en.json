@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "description": "A static profile brings together a short introduction and competitive-programming links. The repository also keeps the earlier page design."
+  },
+  "pages": {
+    "home": {
+      "title": "An OI profile in one page · {project}"
+    },
+    "features": {
+      "title": "Features · {project}",
+      "description": "A static profile brings together a short introduction and competitive-programming links. The repository also keeps the earlier page design."
+    },
+    "download": {
+      "title": "Get started · {project}",
+      "description": "Follow the competition links on the homepage to Luogu or OIerDB."
+    },
+    "community": {
+      "title": "Community · {project}",
+      "description": "Find usage guidance, follow discussions and review changes to this project."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Get started",
+    "community": "Community"
+  },
+  "ui": {
+    "skip_link": "Skip to main content",
+    "navigation": "Main navigation",
+    "open_navigation": "Open navigation",
+    "close_navigation": "Close navigation",
+    "language": "Choose language",
+    "theme": "Choose theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "platforms": "Supported platforms",
+    "github": "GitHub",
+    "view_image": "View full illustration",
+    "feature_more": "Explore features",
+    "download": "Open the profile",
+    "release_notes": "Source repository",
+    "documentation": "Documentation",
+    "source": "Source repository",
+    "illustration": "First steps",
+    "license": "Apache-2.0 (original HTML)"
+  },
+  "hero": {
+    "title": [
+      "An OI profile in one page"
+    ],
+    "description": [
+      "A static profile brings together a short introduction and competitive-programming links. The repository also keeps the earlier page design."
+    ],
+    "primary_action": "Open the profile",
+    "secondary_action": "Explore features"
+  },
+  "preview": {
+    "caption": "First steps",
+    "tabs": [
+      {
+        "label": "Get started",
+        "icon": "book"
+      }
+    ],
+    "items": [
+      {
+        "title": "Visit the profile",
+        "description": "Follow the competition links on the homepage to Luogu or OIerDB.",
+        "icon": "book"
+      },
+      {
+        "title": "Explore the older page",
+        "description": "Open the earlier profile to compare its layout and content.",
+        "icon": "link"
+      }
+    ]
+  },
+  "features": {
+    "title": "Project features",
+    "groups": [
+      {
+        "title": "Competition profiles",
+        "description": "The page groups links to Luogu and OIerDB for readers exploring the author’s public competition profiles.",
+        "detail": "",
+        "icon": "layers"
+      },
+      {
+        "title": "Two versions of the page",
+        "description": "The current and earlier layouts are preserved in index.html and indexold.html.",
+        "detail": "",
+        "icon": "book"
+      }
+    ]
+  },
+  "getting_started": {
+    "title": "Get started · {project}",
+    "steps": [
+      {
+        "title": "Visit the profile",
+        "description": "Follow the competition links on the homepage to Luogu or OIerDB.",
+        "icon": "book"
+      },
+      {
+        "title": "Explore the older page",
+        "description": "Open the earlier profile to compare its layout and content.",
+        "icon": "link"
+      }
+    ]
+  },
+  "community": {
+    "title": "Community · {project}",
+    "description": "Find usage guidance, follow discussions and review changes to this project.",
+    "links": [
+      {
+        "label": "Help and feedback",
+        "description": "Browse existing reports or describe a reproducible problem.",
+        "icon": "book"
+      },
+      {
+        "label": "Join the discussion",
+        "description": "Read existing topics or share questions and ideas.",
+        "icon": "link"
+      },
+      {
+        "label": "Review changes",
+        "description": "Review open pull requests or prepare a contribution.",
+        "icon": "code"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "{copyright}"
+  }
+}
